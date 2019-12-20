@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { directive } from '@babel/types'
 import api from '../../services/api'
+import Loader from '../Loader/Loader'
 
 class Abstract extends Component{
     state ={
@@ -11,9 +12,10 @@ class Abstract extends Component{
     }
 
     async componentDidMount(){
-        const result = await api.get('/listageralapartamentos')
-        console.log(result)
-        this.setState({data: result.data})
+        api.get('/listageralapartamentos').then((response)=>{
+            this.setState({data: response.data})
+        })
+
         console.log(this.state)
     }
 
@@ -23,6 +25,7 @@ class Abstract extends Component{
                 <div className="card-header">
                     Seus Apartamentos
                 </div>
+                <Loader/>
                 <ul className="list-group list-group-flush">
                     {
                         this.state.data.map(item =>(
