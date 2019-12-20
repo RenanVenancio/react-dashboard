@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
 import TopMenu from './components/TopMenu/TopMenu'
+import Abstract from './components/Abstract/Abstract'
 
 function App() {
   return (
     <div className="App">
       <TopMenu/>
-      <button class="btn btn-success">OK</button>
+      <div className="container">
+        <Abstract/>
+
+      </div>
     </div>
   );
 }
