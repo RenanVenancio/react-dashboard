@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, ReactDOM } from 'react'
 import './styles.css'
 
 class Loader extends Component{
@@ -7,11 +7,20 @@ class Loader extends Component{
     }
 
     destroy(){
-        
+        this.setState({hide: true})
     }
 
     render(){
-        return(<div className="lds-dual-ring"></div>)
+        if(this.state.hide){
+            return null
+        }else{
+            return(
+                <div>
+                    <div className="lds-dual-ring"></div>
+                    <small>aguarde</small>
+                </div>
+                )
+        }
     }
 }
 
