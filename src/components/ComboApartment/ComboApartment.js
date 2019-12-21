@@ -10,15 +10,19 @@ class ComboApartment extends Component {
     async componentDidMount() {
         await api.get('/listageralapartamentos').then(response =>{
             this.setState({ 
-                data: response.data,
-                selected: this.props.atualSelected 
+                data: response.data
             })
         })
         console.log(this.props)
     }
 
+    componentWillReceiveProps(value){
+        this.setState({ selected: value.atualSelected })
+    }
+
     handleChange = (evt) =>{
         console.log(evt.target.value)
+        this.setState({ selected: evt.target.value })
     }
 
     render(){

@@ -22,8 +22,6 @@ class OccurenceForm extends Component {
             await api.get(`/chamado/${this.state.id}`).then(response => {
                 this.setState({ data: response.data })
                 this.loaderRef.current.hide(true)
-                //this.comboApartmentRef.current.setSelected(this.state.data.apartamento)
-                console.log(response.data)
             })
         }else{
             console.log('NOVO')
@@ -37,7 +35,7 @@ class OccurenceForm extends Component {
                     Protocolo: <strong>{ this.state.data.protocolo }</strong>
                 </div>
                 <div className="card-body">
-                    <Loader ref={this.loaderRef} selected={ this.state.data.apartamento } />
+                    <Loader ref={this.loaderRef} />
                     <form>
                         <div className="form-group row">
                             <label htmlFor="exampleInputEmail1">Ocorrência</label>
