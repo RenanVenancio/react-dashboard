@@ -1,5 +1,4 @@
-import React, { Component, ReactDOM } from 'react'
-import { directive } from '@babel/types'
+import React, { Component } from 'react'
 import api from '../../services/api'
 import Loader from '../Loader/Loader'
 
@@ -7,6 +6,7 @@ class Abstract extends Component{
     state ={
         data: []
     }
+
     constructor(props){
         super(props)
         this.loaderRef = React.createRef();
@@ -15,7 +15,7 @@ class Abstract extends Component{
     async componentDidMount(){
         api.get('/listageralapartamentos').then((response)=>{
             this.setState({data: response.data})
-            this.loaderRef.current.destroy()
+            this.loaderRef.current.hide(true)
         })
 
         console.log(this.state)

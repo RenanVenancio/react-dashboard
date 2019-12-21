@@ -1,4 +1,4 @@
-import React, { Component, ReactDOM } from 'react'
+import React, { Component } from 'react'
 import './styles.css'
 
 class Loader extends Component{
@@ -6,8 +6,8 @@ class Loader extends Component{
         hide: false
     }
 
-    destroy(){
-        this.setState({hide: true})
+    hide(param){
+        this.setState({hide: param})
     }
 
     render(){

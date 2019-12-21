@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import TopMenu from './components/TopMenu/TopMenu'
-import Abstract from './components/Abstract/Abstract'
+import Routes from './routes/routes'
 
 function App() {
   return (
     <div className="App">
-      <TopMenu/>
-      <div className="container">
-        <Abstract/>
-
+      
+      <div className="">
+          <Routes/>
       </div>
     </div>
   );
