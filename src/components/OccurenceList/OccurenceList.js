@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import api from '../../services/api'
 import Loader from '../Loader/Loader'
 import nophoto from '../../img/nophoto.svg'
+import { Link } from 'react-router-dom'
 
 class OccureceList extends Component {
     state = {
@@ -76,7 +77,7 @@ class OccureceList extends Component {
                                 </div>
                                 <hr/>
                                 <div className="row d-flex justify-content-center">
-                                    <button className="btn btn-sm col-12 btn-primary">Abrir</button>
+                                    <Link to={`/ocorrencia/${ item.id }`}  className="btn btn-sm col-12 btn-primary">Abrir</Link>
                                 </div>
                             </div>
                         </div>                        

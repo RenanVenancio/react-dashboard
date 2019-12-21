@@ -15,7 +15,7 @@ class Loader extends Component{
             return null
         }else{
             return(
-                <div>
+                <div className="loader-recipient">
                     <div className="lds-dual-ring"></div>
                     <small>aguarde</small>
                 </div>
