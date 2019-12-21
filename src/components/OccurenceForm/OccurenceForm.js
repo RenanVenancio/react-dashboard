@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import api from '../../services/api'
 import Loader from '../../components/Loader/Loader'
 import ComboApartment from '../../components/ComboApartment/ComboApartment'
+import ComboProblem from '../../components/ComboProblem/ComboProblem'
 
 
 class OccurenceForm extends Component {
@@ -13,7 +14,6 @@ class OccurenceForm extends Component {
     constructor(props){
         super(props)
         this.loaderRef = React.createRef();
-        this.comboApartmentRef = React.createRef()
         this.state.id = this.props.id
     }
 
@@ -45,7 +45,10 @@ class OccurenceForm extends Component {
                             <small id="emailHelp" className="form-text text-muted">Descreva sua ocorrência com detalhes.</small>
                         </div>
                         <div className="form-group row">
-                            <ComboApartment ref={ this.comboApartmentRef } atualSelected={ this.state.data.apartamento }/>
+                            <ComboApartment atualSelected={ this.state.data.apartamento }/>
+                        </div>
+                        <div className="form-group row">
+                            <ComboProblem atualSelected={ this.state.data.categoriaProblema }/>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="exampleInputPassword1">Password</label>

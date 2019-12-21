@@ -17,11 +17,6 @@ class ComboApartment extends Component {
         console.log(this.props)
     }
 
-    setSelected = (value) => {
-        this.setState({ selected: value })
-        console.log('SELECIONAR ' + value )
-    }
-
     handleChange = (evt) =>{
         console.log(evt.target.value)
     }
@@ -30,7 +25,7 @@ class ComboApartment extends Component {
         return(
             <React.Fragment>
                 <label htmlFor="combo-aptos">Apartamento</label>
-                <select className="form-control" id="combo-aptos" onChange={ this.handleChange } value={ this.props.atualSelected }>
+                <select className="form-control" id="combo-aptos" onChange={ this.handleChange } value={ this.state.selected }>
                     {
                         this.state.data.map(item =>(
                             <option key={ item.id } value={ item.id }>{ item.bloco.empreendimento.nomeEmpreendimento + ' BLOCO: ' + item.bloco.bloco + ' APTO: ' + item.apartamento }</option>

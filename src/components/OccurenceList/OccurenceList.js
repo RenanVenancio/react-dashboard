@@ -68,7 +68,7 @@ class OccureceList extends Component {
                             </div>
                             <div className="card-body">
                                 <div className="media">                                   
-                                    <img class="mr-3" width="80px" alt="foto" src={ (item.img == null) ? nophoto : item.img }></img>
+                                    <img className="mr-3" width="80px" alt="foto" src={ (item.img == null) ? nophoto : item.img }></img>
                                     
                                     <div className="media-body">
                                         { item.descricao }
