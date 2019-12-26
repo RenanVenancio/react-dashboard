@@ -1,19 +1,28 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
 
-class ComboApartment extends Component {
+class ComboCommonArea extends Component {
     state = {
         data: [],
-        selected: undefined,
-        lastSelected: undefined
+        lastSelected: undefined,
+        selected: undefined
     }
 
     async componentDidMount() {
-        await api.get('/listageralapartamentos').then(response =>{
-            this.setState({ 
-                data: response.data
+        this.loadData()
+
+    }
+
+    loadData = async () =>{
+        if(this.state.data.length === 0){
+            await api.get('/listarareascomuns').then(response =>{
+                this.setState({ data: response.data })
             })
-        })
+        }
+    }
+
+    handleChange = (evt) =>{
+        this.setState({ lastSelected: evt.target.value })
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -33,15 +42,14 @@ class ComboApartment extends Component {
         }
     }
 
-
     render(){
         return(
             <React.Fragment>
-                <label htmlFor="combo-aptos">Apartamento</label>
-                <select name="apartamento" className="form-control" id="combo-aptos" onChange={ this.props.onChange } value={ this.state.selected }>
+                <label htmlFor="combo-problem">Área comun</label>
+                <select name="areaComum" className="form-control" id="combo-problem" onChange={ this.props.onChange } value={ this.state.selected }>
                     {
                         this.state.data.map(item =>(
-                            <option key={ item.id } value={ item.id }>{ item.bloco.empreendimento.nomeEmpreendimento + ' BLOCO: ' + item.bloco.bloco + ' APTO: ' + item.apartamento }</option>
+                            <option key={ item.id } value={ item.id }>{ item.nomeArea }</option>
                         ))
                     }
                 </select>
@@ -50,4 +58,4 @@ class ComboApartment extends Component {
     }
 }
 
-export default ComboApartment
+export default ComboCommonArea
