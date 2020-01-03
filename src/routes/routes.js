@@ -5,6 +5,19 @@ import Occurence from '../pages/Occurrence/Ocurrence'
 import TopMenu from '../components/TopMenu/TopMenu'
 import OccurenceDetail from '../pages/OccurrenceDetail/OccurenceDetail'
 import Login from '../pages/Login/Login'
+import Auth from '../services/auth'
+
+const PrivateRoute = ({component: Component, ...rest}) => (
+    <Route { ...rest } render={ props => 
+
+        Auth.authenticated ? (
+            <Component {...props}/>
+        ) : (
+            <Redirect to={{pathname:'/login', state: {from: props.location} }}/>
+        )     
+    }
+    />
+)
 
 
 const Routes = () =>{
@@ -13,10 +26,10 @@ const Routes = () =>{
         <TopMenu/>
         <div className="container">
             <Switch>
-                <Route exact path='/' component={ Home }/>
-                <Route exact path='/ocorrencia' component={ Occurence }/>
-                <Route exact path='/ocorrencia/cadastro/:ID' component={ OccurenceDetail }/>
-                <Route exact path='/ocorrencia/cadastro/' component={ OccurenceDetail }/>
+                <PrivateRoute exact path='/' component={ Home }/>
+                <PrivateRoute exact path='/ocorrencia' component={ Occurence }/>
+                <PrivateRoute exact path='/ocorrencia/cadastro/:ID' component={ OccurenceDetail }/>
+                <PrivateRoute exact path='/ocorrencia/cadastro/' component={ OccurenceDetail }/>
                 <Route exact path='/login' component={ Login }/>
             </Switch>
         </div>

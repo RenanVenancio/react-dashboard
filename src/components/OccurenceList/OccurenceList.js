@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { FaEllipsisV } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Auth from '../../services/auth'
 
 class OccureceList extends Component {
     state = {
@@ -29,7 +29,7 @@ class OccureceList extends Component {
         api.get(`/listarchamados?search=${param}`).then(result =>{
             this.setState({ data: result.data })
             this.loaderRef.current.hide(true)
-            console.log(this.state);
+            console.log(Auth.authenticated);
         })
         
     }

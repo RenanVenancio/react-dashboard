@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom'
 import { FaSave } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Auth from '../../services/auth'
 
 
 class OccurenceForm extends Component {
@@ -40,6 +41,7 @@ class OccurenceForm extends Component {
         this.handleAdd = this.handleAdd.bind(this)
         this.handleChange = this.handleChange.bind(this)
         toast.configure()
+        
 
     }
 
@@ -52,6 +54,9 @@ class OccurenceForm extends Component {
             await api.get(`/chamado/${this.state.id}`).then(response => {
                 this.setState({ ...response.data })
                 this.loaderRef.current.hide(true)
+                
+            }).catch(e => {
+                console.log(Auth)
             })
         }else{
             this.loaderRef.current.hide(true)

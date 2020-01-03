@@ -1,5 +1,5 @@
-const isAuthenticated = (value) => {
-    if(value === false){
-        return 
-    }
+const Auth = {
+    authenticated: window.localStorage.getItem('@sgo-token') ? true : false
 }
+
+export default Auth
