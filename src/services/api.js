@@ -2,9 +2,22 @@ import axios from 'axios'
 
 const api = axios.create({
     baseURL: 'https://sgoengenharia.herokuapp.com/api',
-    headers: {
-        Authorization: 'token f07a13e4f064575254cd299f4fec4750caf1cf27'
+})
+
+api.interceptors.request.use(async config => {
+    const token = window.localStorage.getItem('@sgo-token')
+    if (token) {
+      config.headers.Authorization = `token ${token}`;
     }
+
+    return config;
+});
+
+api.interceptors.response.use(response =>{
+    return response
+}, (error) => {
+    console.log(error.response.status)
+    return Promise.reject(error.response)
 })
 
 export default api

@@ -64,12 +64,9 @@ class OccurenceForm extends Component {
     }
 
     submit = () => {
-        console.log(this.state)
-
         const options = {
             headers: {'Content-Type': 'application/json' }
         }
-
 
         if(this.state.id){
             api.put(`/chamado/${this.state.id}/`, this.state, options).then(res =>{
