@@ -47,6 +47,8 @@ class ComboProblem extends Component {
             <React.Fragment>
                 <label htmlFor="combo-problem">Categoria do Problema</label>
                 <select name="categoriaProblema" className="form-control" id="combo-problem" onChange={ this.props.onChange } value={ this.state.selected }>
+                    <option value="">Selecione</option>
+
                     {
                         this.state.data.map(item =>(
                             <option key={ item.id } value={ item.id }>{ item.nomeCategoria }</option>

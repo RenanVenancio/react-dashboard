@@ -3,6 +3,10 @@ import api from '../../services/api'
 import Loader from '../Loader/Loader'
 import nophoto from '../../img/nophoto.svg'
 import { Link } from 'react-router-dom'
+import { FaEllipsisV } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class OccureceList extends Component {
     state = {
@@ -13,6 +17,7 @@ class OccureceList extends Component {
     constructor(props){
         super(props)
         this.loaderRef = React.createRef();
+        toast.configure()
     }
 
     componentDidMount(){
@@ -24,7 +29,9 @@ class OccureceList extends Component {
         api.get(`/listarchamados?search=${param}`).then(result =>{
             this.setState({ data: result.data })
             this.loaderRef.current.hide(true)
+            console.log(this.state);
         })
+        
     }
 
     updateSearchValue = (evt) => {
@@ -36,10 +43,15 @@ class OccureceList extends Component {
         evt.preventDefault()
     }
 
+    showAlert = () => {
+        toast("Wow so easy !")
+    }
+
     render(){
         return(
-            <div className="container mt-4">
-                <form onSubmit={ this.search }>
+            <React.Fragment>
+
+                <form className="mt-4" onSubmit={ this.search }>
                     <div className="input-group mb-3">
                         <input onChange={ this.updateSearchValue } type="text" className="form-control" placeholder="Digite aqui..." aria-label="Recipient's username" aria-describedby="button-addon2"/>
                         <div className="input-group-append">
@@ -57,8 +69,16 @@ class OccureceList extends Component {
                         <div key={ item.id } className="card mt-2">
                             <div className="card-header">
                                 <div className="col-12">
-                                    <div className="row d-flex justify-content-center">
-                                        Protocolo: <strong> { item.protocolo }</strong>
+                                    <div className="row d-flex justify-content-between">
+                                        <div>Protocolo: <strong> { item.protocolo }</strong></div>
+                                        <div className="">
+                                            <button type="button" className="btn btn-sm btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <FaEllipsisV/>
+                                            </button>
+                                            <div className="dropdown-menu">
+                                                <button className="dropdown-item" onClick={this.showAlert}>Excluir</button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="row d-flex justify-content-center">
                                         <span className="badge badge-secondary">{ item.ultimo_evento.replace('#$%', ' - ') }</span>
@@ -69,7 +89,6 @@ class OccureceList extends Component {
                             <div className="card-body">
                                 <div className="media">                                   
                                     <img className="mr-3" width="80px" alt="foto" src={ (item.img == null) ? nophoto : item.img }></img>
-                                    
                                     <div className="media-body">
                                         { item.descricao }
                                     </div>
@@ -77,13 +96,13 @@ class OccureceList extends Component {
                                 </div>
                                 <hr/>
                                 <div className="row d-flex justify-content-center">
-                                    <Link to={`/ocorrencia/${ item.id }`}  className="btn btn-sm col-12 btn-primary">Abrir</Link>
+                                    <Link to={`/ocorrencia/cadastro/${ item.id }`}  className="btn btn-sm col-12 btn-primary">Abrir</Link>
                                 </div>
                             </div>
                         </div>                        
                     ))
                 }
-            </div>
+            </React.Fragment>
         )
     }
 }
