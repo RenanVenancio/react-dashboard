@@ -4,7 +4,11 @@ import './styles.css'
 
 const Login = () => {
     return(
-        <LoginBox/>
+        <div className="login-box">
+            <h1>SGO</h1>
+            <small>Entre com seu login e senha</small>
+            <LoginBox />
+        </div>
     )
 }
 

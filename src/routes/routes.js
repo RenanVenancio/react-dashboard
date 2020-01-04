@@ -19,17 +19,23 @@ const PrivateRoute = ({component: Component, ...rest}) => (
     />
 )
 
+const DefaultRoutes = () => (
+    <React.Fragment>
+        <TopMenu/>
+        <PrivateRoute exact path='/' component={ Home }/>
+        <PrivateRoute exact path='/ocorrencia' component={ Occurence }/>
+        <PrivateRoute exact path='/ocorrencia/cadastro/:ID' component={ OccurenceDetail }/>
+        <PrivateRoute exact path='/ocorrencia/cadastro/' component={ OccurenceDetail }/>
+    </React.Fragment>
+)
+
 
 const Routes = () =>{
     return(
         <BrowserRouter>
-        <TopMenu/>
             <Switch>
-                <PrivateRoute exact path='/' component={ Home }/>
-                <PrivateRoute exact path='/ocorrencia' component={ Occurence }/>
-                <PrivateRoute exact path='/ocorrencia/cadastro/:ID' component={ OccurenceDetail }/>
-                <PrivateRoute exact path='/ocorrencia/cadastro/' component={ OccurenceDetail }/>
                 <Route exact path='/login' component={ Login }/>
+                <Route component={ DefaultRoutes }/>
             </Switch>
         </BrowserRouter>
     )

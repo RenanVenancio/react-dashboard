@@ -3,7 +3,7 @@ import OccurenceForm from '../../components/OccurenceForm/OccurenceForm'
 
 const OcurrenceDetail = (props) => {
     return(
-        <div>               
+        <div className="container">               
             <OccurenceForm id={ props.match.params.ID }/>
         </div>
     )

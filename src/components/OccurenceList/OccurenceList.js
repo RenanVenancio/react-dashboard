@@ -66,7 +66,7 @@ class OccureceList extends Component {
 
                 {
                     this.state.data.map(item =>(
-                        <div key={ item.id } className="card mt-2">
+                        <div key={ item.id } className="card mt-2 col-12">
                             <div className="card-header">
                                 <div className="col-12">
                                     <div className="row d-flex justify-content-between">

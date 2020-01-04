@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import apiAuth from '../../services/apiAuth'
 import { Redirect } from 'react-router-dom'
+import './styles.css'
  
 class LoginBox extends Component {
 
@@ -17,10 +18,7 @@ class LoginBox extends Component {
             headers: {'Content-Type': 'application/json' }
         }
         apiAuth.post('/obter-token/', this.state, options).then(res => {
-            console.log(res)
             window.localStorage.setItem('@sgo-token', res.data.token);
-            console.log('redirecioneee');
-            console.log(this.state);
             this.setState({ 
                 redirect: true 
             })
@@ -40,7 +38,7 @@ class LoginBox extends Component {
         return(
             <div className="card">
                 <div className="card-body">
-                    { this.state.redirect ? <Redirect to="/ocorrencia"/> : '' }
+                    { this.state.redirect ? <Redirect to="/"/> : null }
                     <form onSubmit={ this.submit }>
                         <div className="form-group row">
                             <label htmlFor="user">Usuário</label>
@@ -51,7 +49,7 @@ class LoginBox extends Component {
                             <input type="password" name="password"  onChange={ this.handleChange } value={ this.state.password }  className="form-control" id="senha" aria-describedby="senha"></input>
                         </div>
                         <div className="form-group row">
-                            <button className="btn btn-primary" type="submit" onClick={ this.submit }>Entrar</button>
+                            <button className="btn btn-outline-primary col-12" type="submit" onClick={ this.submit }>Entrar</button>
                         </div>
                     </form>
                 </div>

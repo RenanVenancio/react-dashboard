@@ -23,7 +23,7 @@ class Abstract extends Component{
 
     render(){
         return(
-            <div className="card mt-4">
+            <div className="card">
                 <div className="card-header">
                     Seus Apartamentos
                 </div>

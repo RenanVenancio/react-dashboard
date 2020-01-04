@@ -134,7 +134,7 @@ class OccurenceForm extends Component {
 
     render(){
         return(
-            <div className="card mt-4">
+            <div className="card mt-4 col-12">
                 {this.state.redirect ? <Redirect to="/ocorrencia"/> : ''}
                 <div className="card-header">
                     Protocolo: <strong>{ this.state.protocolo }</strong>
