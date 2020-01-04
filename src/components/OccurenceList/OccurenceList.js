@@ -24,9 +24,9 @@ class OccureceList extends Component {
         this.loadData();
     }
 
-    loadData = (param='') => {
+    loadData = async(param='') => {
         this.loaderRef.current.hide(false)
-        api.get(`/listarchamados?search=${param}`).then(result =>{
+        await api.get(`/listarchamados?search=${param}`).then(result =>{
             this.setState({ data: result.data })
             this.loaderRef.current.hide(true)
             console.log(Auth.authenticated);
