@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom'
+import ButtonLogout from '../ButtonLogout/ButtonLogout'
 
 class TopMenu extends Component {
     
@@ -16,11 +17,9 @@ class TopMenu extends Component {
 
     render(){
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
                 <Link to="/" className="navbar-brand"><strong>SGO</strong><small> Gerencia de Ocorrências</small></Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                <ButtonLogout/>
             </nav>
         )
     }

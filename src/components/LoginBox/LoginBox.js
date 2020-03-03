@@ -37,6 +37,9 @@ class LoginBox extends Component {
     render(){
         return(
             <div className="card">
+                <div className="card-header">
+                    Entre com seu Usuário e Senha
+                </div>
                 <div className="card-body">
                     { this.state.redirect ? <Redirect to="/"/> : null }
                     <form onSubmit={ this.submit }>
@@ -49,7 +52,7 @@ class LoginBox extends Component {
                             <input type="password" name="password"  onChange={ this.handleChange } value={ this.state.password }  className="form-control" id="senha" aria-describedby="senha"></input>
                         </div>
                         <div className="form-group row">
-                            <button className="btn btn-outline-primary col-12" type="submit" onClick={ this.submit }>Entrar</button>
+                            <button className="btn btn-outline-danger col-12" type="submit" onClick={ this.submit }>Entrar</button>
                         </div>
                     </form>
                 </div>

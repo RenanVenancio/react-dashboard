@@ -96,7 +96,11 @@ class OccureceList extends Component {
                                 </div>
                                 <hr/>
                                 <div className="row d-flex justify-content-center">
-                                    <Link to={`/ocorrencia/cadastro/${ item.id }`}  className="btn btn-sm col-12 btn-primary">Abrir</Link>
+                                    { item.statusChamado === 'Finalizado' ? (
+                                        <Link to={`/ocorrencia/cadastro/${ item.id }`} className="btn btn-sm col-12 btn-outline-success">Avaliar</Link>
+                                    ):(
+                                        <Link to={`/ocorrencia/cadastro/${ item.id }`} className="btn btn-sm col-12 btn-outline-danger">Abrir</Link>
+                                    ) }
                                 </div>
                             </div>
                         </div>                        
